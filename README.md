@@ -125,5 +125,3 @@ Detalle de productos incluidos en cada pedido.
 | `id_producto`     | Producto asociado   | INT           | FK    | Relación a `Producto` |
 | `cantidad`        | Cantidad solicitada | INT           | -     | Unidades              |
 | `precio_unitario` | Precio al momento   | DECIMAL(10,2) | -     | Precio histórico      |
-
-## 7. Script SQL (.sql) de creación de la BD
