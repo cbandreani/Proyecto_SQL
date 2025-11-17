@@ -27,3 +27,27 @@ FoodExpress funciona como intermediario entre restaurantes y clientes. La empres
 - Repartidores: entregan los pedidos a domicilio.
 - Plataforma: registra transacciones, cobra comisiones y administra el flujo del proceso.
 El modelo combina logística, marketplace y procesamiento de pagos.
+
+## 5. DER
+
+## 6. Listado de tablas y diccionario de datos
+
+# Tabla: Zona
+Contiene las zonas geográficas donde operan clientes, restaurantes y repartidores.
+| Campo     | Nombre completo       | Tipo         | Clave | Descripción                 |
+| --------- | --------------------- | ------------ | ----- | --------------------------- |
+| `id_zona` | Identificador de zona | INT          | PK    | Identificador único de zona |
+| `nombre`  | Nombre de zona        | VARCHAR(100) | -     | Nombre de la zona           |
+
+# Tabla: Cliente
+Almacena los clientes registrados que realizan pedidos.
+| Campo        | Nombre completo          | Tipo         | Clave | Descripción                     |
+| ------------ | ------------------------ | ------------ | ----- | ------------------------------- |
+| `id_cliente` | Identificador de cliente | INT          | PK    | Identificador único del cliente |
+| `nombre`     | Nombre del cliente       | VARCHAR(50)  | -     | Nombre                          |
+| `apellido`   | Apellido del cliente     | VARCHAR(50)  | -     | Apellido                        |
+| `email`      | Email del cliente        | VARCHAR(100) | -     | Correo electrónico              |
+| `telefono`   | Teléfono del cliente     | VARCHAR(20)  | -     | Teléfono                        |
+| `id_zona`    | Zona del cliente         | INT          | FK    | Relación a `Zona`               |
+
+## 7. Script SQL (.sql) de creación de la BD
