@@ -32,14 +32,14 @@ El modelo combina logística, marketplace y procesamiento de pagos.
 
 ## 6. Listado de tablas y diccionario de datos
 
-# Tabla: Zona
+### Tabla: Zona
 Contiene las zonas geográficas donde operan clientes, restaurantes y repartidores.
 | Campo     | Nombre completo       | Tipo         | Clave | Descripción                 |
 | --------- | --------------------- | ------------ | ----- | --------------------------- |
 | `id_zona` | Identificador de zona | INT          | PK    | Identificador único de zona |
 | `nombre`  | Nombre de zona        | VARCHAR(100) | -     | Nombre de la zona           |
 
-# Tabla: Cliente
+### Tabla: Cliente
 Almacena los clientes registrados que realizan pedidos.
 | Campo        | Nombre completo          | Tipo         | Clave | Descripción                     |
 | ------------ | ------------------------ | ------------ | ----- | ------------------------------- |
@@ -49,5 +49,78 @@ Almacena los clientes registrados que realizan pedidos.
 | `email`      | Email del cliente        | VARCHAR(100) | -     | Correo electrónico              |
 | `telefono`   | Teléfono del cliente     | VARCHAR(20)  | -     | Teléfono                        |
 | `id_zona`    | Zona del cliente         | INT          | FK    | Relación a `Zona`               |
+
+### Tabla: Restaurante
+Restaurantes que ofrecen productos en la plataforma.
+| Campo            | Nombre completo           | Tipo         | Clave | Descripción        |
+| ---------------- | ------------------------- | ------------ | ----- | ------------------ |
+| `id_restaurante` | Identificador restaurante | INT          | PK    | ID del restaurante |
+| `nombre`         | Nombre del restaurante    | VARCHAR(100) | -     | Nombre comercial   |
+| `direccion`      | Dirección física          | VARCHAR(150) | -     | Ubicación          |
+| `id_zona`        | Zona del restaurante      | INT          | FK    | Relación a `Zona`  |
+
+### Tabla: Repartidor
+Repartidores disponibles para asignar pedidos.
+| Campo           | Nombre completo          | Tipo        | Clave | Descripción       |
+| --------------- | ------------------------ | ----------- | ----- | ----------------- |
+| `id_repartidor` | Identificador repartidor | INT         | PK    | ID único          |
+| `nombre`        | Nombre del repartidor    | VARCHAR(50) | -     | Nombre            |
+| `apellido`      | Apellido del repartidor  | VARCHAR(50) | -     | Apellido          |
+| `telefono`      | Teléfono                 | VARCHAR(20) | -     | Teléfono          |
+| `id_zona`       | Zona asignada            | INT         | FK    | Relación a `Zona` |
+
+### Tabla: Categoría
+Categorias o tipos de productos ofrecidos.
+| Campo          | Nombre completo         | Tipo         | Clave | Descripción      |
+| -------------- | ----------------------- | ------------ | ----- | ---------------- |
+| `id_categoria` | Identificador categoría | INT          | PK    | ID único         |
+| `nombre`       | Nombre categoría        | VARCHAR(100) | -     | Tipo de producto |
+
+### Tabla: Producto
+Productos vendidos por cada restaurante.
+| Campo            | Nombre completo        | Tipo          | Clave | Descripción              |
+| ---------------- | ---------------------- | ------------- | ----- | ------------------------ |
+| `id_producto`    | Identificador producto | INT           | PK    | ID único                 |
+| `id_restaurante` | Restaurante dueño      | INT           | FK    | Relación a `Restaurante` |
+| `id_categoria`   | Categoría              | INT           | FK    | Relación a `Categoria`   |
+| `nombre`         | Nombre del producto    | VARCHAR(150)  | -     | Nombre                   |
+| `precio`         | Precio unitario        | DECIMAL(10,2) | -     | Precio                   |
+
+### Tabla: Metodo_pago
+Métodos de pago disponibles en la plataforma.
+| Campo       | Nombre completo           | Tipo        | Clave | Descripción             |
+| ----------- | ------------------------- | ----------- | ----- | ----------------------- |
+| `id_metodo` | Identificador método pago | INT         | PK    | ID único                |
+| `nombre`    | Nombre método             | VARCHAR(50) | -     | Efectivo, Tarjeta, etc. |
+
+### Tabla: Estado_pedido
+Estados en los que puede encontrarse un pedido.
+| Campo         | Nombre completo      | Tipo        | Clave | Descripción                |
+| ------------- | -------------------- | ----------- | ----- | -------------------------- |
+| `id_estado`   | Identificador estado | INT         | PK    | ID único                   |
+| `descripcion` | Estado del pedido    | VARCHAR(50) | -     | Pendiente, En camino, etc. |
+
+### Tabla: Pedido
+Encabezado del pedido realizado por un cliente.
+| Campo            | Nombre completo         | Tipo          | Clave | Descripción                |
+| ---------------- | ----------------------- | ------------- | ----- | -------------------------- |
+| `id_pedido`      | Identificador de pedido | INT           | PK    | ID único                   |
+| `id_cliente`     | Cliente del pedido      | INT           | FK    | Relación a `Cliente`       |
+| `id_restaurante` | Restaurante productor   | INT           | FK    | Relación a `Restaurante`   |
+| `id_repartidor`  | Repartidor asignado     | INT           | FK    | Relación a `Repartidor`    |
+| `id_metodo`      | Método de pago          | INT           | FK    | Relación a `Metodo_pago`   |
+| `id_estado`      | Estado actual           | INT           | FK    | Relación a `Estado_pedido` |
+| `fecha_hora`     | Fecha y hora            | DATETIME      | -     | Timestamp                  |
+| `total`          | Total del pedido        | DECIMAL(10,2) | -     | Monto total                |
+
+### Tabla: Item_pedido
+Detalle de productos incluidos en cada pedido.
+| Campo             | Nombre completo     | Tipo          | Clave | Descripción           |
+| ----------------- | ------------------- | ------------- | ----- | --------------------- |
+| `id_item`         | Identificador ítem  | INT           | PK    | ID único              |
+| `id_pedido`       | Pedido asociado     | INT           | FK    | Relación a `Pedido`   |
+| `id_producto`     | Producto asociado   | INT           | FK    | Relación a `Producto` |
+| `cantidad`        | Cantidad solicitada | INT           | -     | Unidades              |
+| `precio_unitario` | Precio al momento   | DECIMAL(10,2) | -     | Precio histórico      |
 
 ## 7. Script SQL (.sql) de creación de la BD
