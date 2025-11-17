@@ -31,7 +31,7 @@ FoodExpress funciona como intermediario entre restaurantes y clientes. La empres
 El modelo combina logística, marketplace y procesamiento de pagos.
 
 ## 5. DER
-<img width="1226" height="829" alt="DIAGRAMA ENTREGA 1" src="https://github.com/user-attachments/assets/f4129210-4e03-4265-a073-25fa46f08c8f" />
+<img width="1226" height="829" alt="DIAGRAMA ENTREGA 1 (1)" src="https://github.com/user-attachments/assets/e702d6ec-aede-4df8-8b89-ab8495c6da33" />
 
 ## 6. Listado de tablas y diccionario de datos
 
