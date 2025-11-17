@@ -1,4 +1,4 @@
-# Proyecto_SQL
+# Proyecto SQL
 ## 1. Introducción
 FoodExpress es una plataforma digital de pedidos de comida a domicilio que conecta clientes, restaurantes y repartidores. El sistema permite gestionar el catálogo de productos, registrar pedidos, asignar repartidores y almacenar información relevante para análisis comerciales, logísticos y operativos. El objetivo principal es centralizar esta información de manera estructurada para facilitar consultas, reportes y procesos analíticos.
 
@@ -18,6 +18,7 @@ Sin una base de datos centralizada, los procesos del negocio presentan múltiple
 - Imposibilidad de analizar ventas, zonas críticas o desempeño de delivery.
 - Problemas para gestionar múltiples estados de pedido (pendiente, en preparación, enviado, entregado).
 - Limitaciones para estandarizar métodos de pago y promociones.
+
 La implementación de una base de datos bien diseñada resuelve estas brechas, unificando datos y permitiendo reportes confiables.
 
 ## 4. Modelo de negocio
@@ -26,6 +27,7 @@ FoodExpress funciona como intermediario entre restaurantes y clientes. La empres
 - Clientes: realizan pedidos mediante la aplicación.
 - Repartidores: entregan los pedidos a domicilio.
 - Plataforma: registra transacciones, cobra comisiones y administra el flujo del proceso.
+
 El modelo combina logística, marketplace y procesamiento de pagos.
 
 ## 5. DER
