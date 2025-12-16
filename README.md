@@ -1,4 +1,7 @@
 # Proyecto SQL
+
+## Entrega 1
+
 ## 1. Introducción
 FoodExpress es una plataforma digital de pedidos de comida a domicilio que conecta clientes, restaurantes y repartidores. El sistema permite gestionar el catálogo de productos, registrar pedidos, asignar repartidores y almacenar información relevante para análisis comerciales, logísticos y operativos. El objetivo principal es centralizar esta información de manera estructurada para facilitar consultas, reportes y procesos analíticos.
 
@@ -125,3 +128,63 @@ Detalle de productos incluidos en cada pedido.
 | `id_producto`     | Producto asociado   | INT           | FK    | Relación a `Producto` |
 | `cantidad`        | Cantidad solicitada | INT           | -     | Unidades              |
 | `precio_unitario` | Precio al momento   | DECIMAL(10,2) | -     | Precio histórico      |
+
+
+## Entrega 2
+
+## 7. Vistas del sistema
+
+### Vista: vw_pedidos_detalle
+
+Esta vista presenta una visión consolidada de los pedidos realizados en la plataforma, mostrando información del cliente, restaurante, método de pago, estado del pedido y total.
+Objetivo: facilitar consultas operativas y reportes administrativos.
+Tablas utilizadas: Pedido, Cliente, Restaurante, Metodo_pago, Estado_pedido.
+
+### Vista: vw_ventas_por_restaurante
+
+Muestra el total acumulado de ventas por restaurante.
+Objetivo: permitir el análisis del rendimiento comercial de cada restaurante.
+Tablas utilizadas: Pedido, Restaurante.
+
+### Vista: vw_productos_mas_vendidos
+
+Lista los productos junto con la cantidad total vendida.
+Objetivo: identificar productos con mayor demanda.
+Tablas utilizadas: Item_pedido, Producto.
+
+## 8. Funciones personalizadas
+
+### Función: fn_total_pedido
+
+Calcula el total monetario de un pedido a partir de sus ítems.
+Objetivo: asegurar consistencia en el cálculo del total de pedidos.
+Tablas utilizadas: Item_pedido.
+
+### Función: fn_cantidad_pedidos_cliente
+
+Devuelve la cantidad total de pedidos realizados por un cliente.
+Objetivo: análisis de clientes frecuentes.
+Tablas utilizadas: Pedido.
+
+## 9. Stored Procedures
+
+### Stored Procedure: sp_crear_pedido
+
+Inserta un nuevo pedido con estado inicial “Pendiente”.
+Objetivo: estandarizar el alta de pedidos en el sistema.
+Tablas impactadas: Pedido.
+
+### Stored Procedure: sp_actualizar_estado_pedido
+
+Actualiza el estado de un pedido existente.
+Objetivo: controlar el flujo del proceso de pedidos.
+Tablas impactadas: Pedido.
+
+## 10. Triggers
+
+### Trigger: tr_actualizar_total_pedido
+
+Se ejecuta automáticamente al insertar un ítem de pedido.
+Actualiza el total del pedido utilizando la función fn_total_pedido.
+Objetivo: mantener integridad y consistencia de los datos.
+Tabla afectada: Item_pedido.
